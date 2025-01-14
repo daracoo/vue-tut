@@ -7,20 +7,28 @@
         @toggle-navbar-theme="toggleNavbarTheme">
     </navbar>        
 
-    <page-viewer 
-        v-if="pages.length > 0"
-        :page="pages[activePage]">
-    </page-viewer>
+    <!--
+        <page-viewer 
+            v-if="pages.length > 0"
+            :page="pages[activePage]">
+        </page-viewer>
+    -->
+    <create-page
+    :page-created="pageCreated">
+        
+    </create-page>
 </template>
 
 <script>
 import PageViewer from './components/PageViewer.vue';
 import Navbar from './components/Navbar.vue';
+import CreatePage from './components/CreatePage.vue';
 
 export default {
     components: {
         Navbar,
         PageViewer,
+        CreatePage
     },
     created() {
         this.getPages();
@@ -47,6 +55,9 @@ export default {
         loadTheme() {
             const savedTheme = localStorage.getItem('theme');
             this.useDarkNavBar = savedTheme === 'dark';
+        },
+        pageCreated(pageObj){
+            console.log(pageObj);
         }
     }
 };
