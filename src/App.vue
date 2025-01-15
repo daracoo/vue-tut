@@ -57,6 +57,7 @@ export default {
             this.useDarkNavBar = savedTheme === 'dark';
         },
         pageCreated(pageObj){
+            this.pages.push(pageObj);
             console.log(pageObj);
         }
     }
