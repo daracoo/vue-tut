@@ -3,16 +3,15 @@
         :pages="pages" 
         :active-page="activePage" 
         :use-dark-nav-bar="useDarkNavBar" 
-        :nav-link-click="(index) => activePage = index" 
         @toggle-navbar-theme="toggleNavbarTheme">
     </navbar>        
 
-    <!--
+    
         <page-viewer 
             v-if="pages.length > 0"
             :page="pages[activePage]">
         </page-viewer>
-    -->
+
     <create-page
         @page-created="pageCreated"
     >
@@ -33,6 +32,10 @@ export default {
     created() {
         this.getPages();
         this.loadTheme();
+
+        this.$bus.$on('navbarLinkActivated', (index) => {
+            this.activePage = index;
+        });
     },
     data() {
         return {
