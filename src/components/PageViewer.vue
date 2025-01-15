@@ -1,14 +1,19 @@
 <template>
-    <div class="container mt-4">
-        <h1>Page Title</h1>
-        <p>{{$route.params.index}}</p>
+    <div v-if="page" class="container mt-4">
+        <h1>{{page.pageTitle}}</h1>
+        <p>{{page.content}}</p>
     </div>
 </template>
 
 <script>
 export default{
     created(){
-        //this.$route.params
+        this.page = this.$pages.getSinglePage(this.$route.params.index);
+    },
+    data(){
+        return{
+            page:null
+        }
     }
 }
 

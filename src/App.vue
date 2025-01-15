@@ -1,14 +1,14 @@
 <template>
-    <router-view>
-        
-    </router-view>
-
     <navbar 
         :pages="pages" 
         :active-page="activePage" 
         :use-dark-nav-bar="useDarkNavBar" 
         @toggle-navbar-theme="toggleNavbarTheme">
     </navbar>        
+
+    <router-view>
+        
+    </router-view>
 
         <!--<page-viewer 
             v-if="pages.length > 0"
